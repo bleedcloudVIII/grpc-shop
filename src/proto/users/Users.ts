@@ -28,6 +28,15 @@ export interface UsersClient extends grpc.Client {
   delete(argument: _users_UsersIdRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
   delete(argument: _users_UsersIdRequest, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
   
+  FindAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
+  FindAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
+  FindAll(argument: _google_protobuf_Empty, options: grpc.CallOptions, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
+  FindAll(argument: _google_protobuf_Empty, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
+  findAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
+  findAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
+  findAll(argument: _google_protobuf_Empty, options: grpc.CallOptions, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
+  findAll(argument: _google_protobuf_Empty, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
+  
   FindOne(argument: _users_UsersIdRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
   FindOne(argument: _users_UsersIdRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
   FindOne(argument: _users_UsersIdRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
@@ -36,15 +45,6 @@ export interface UsersClient extends grpc.Client {
   findOne(argument: _users_UsersIdRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
   findOne(argument: _users_UsersIdRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
   findOne(argument: _users_UsersIdRequest, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
-  
-  FindOneAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
-  FindOneAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
-  FindOneAll(argument: _google_protobuf_Empty, options: grpc.CallOptions, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
-  FindOneAll(argument: _google_protobuf_Empty, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
-  findOneAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
-  findOneAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
-  findOneAll(argument: _google_protobuf_Empty, options: grpc.CallOptions, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
-  findOneAll(argument: _google_protobuf_Empty, callback: grpc.requestCallback<_users_FindAllUsersResponse__Output>): grpc.ClientUnaryCall;
   
   Update(argument: _users_UpdateUsersRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
   Update(argument: _users_UpdateUsersRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_users_UsersResponse__Output>): grpc.ClientUnaryCall;
@@ -62,9 +62,9 @@ export interface UsersHandlers extends grpc.UntypedServiceImplementation {
   
   Delete: grpc.handleUnaryCall<_users_UsersIdRequest__Output, _users_UsersResponse>;
   
-  FindOne: grpc.handleUnaryCall<_users_UsersIdRequest__Output, _users_UsersResponse>;
+  FindAll: grpc.handleUnaryCall<_google_protobuf_Empty__Output, _users_FindAllUsersResponse>;
   
-  FindOneAll: grpc.handleUnaryCall<_google_protobuf_Empty__Output, _users_FindAllUsersResponse>;
+  FindOne: grpc.handleUnaryCall<_users_UsersIdRequest__Output, _users_UsersResponse>;
   
   Update: grpc.handleUnaryCall<_users_UpdateUsersRequest__Output, _users_UsersResponse>;
   
@@ -73,7 +73,7 @@ export interface UsersHandlers extends grpc.UntypedServiceImplementation {
 export interface UsersDefinition extends grpc.ServiceDefinition {
   Create: MethodDefinition<_users_CreateUsersRequest, _users_UsersResponse, _users_CreateUsersRequest__Output, _users_UsersResponse__Output>
   Delete: MethodDefinition<_users_UsersIdRequest, _users_UsersResponse, _users_UsersIdRequest__Output, _users_UsersResponse__Output>
+  FindAll: MethodDefinition<_google_protobuf_Empty, _users_FindAllUsersResponse, _google_protobuf_Empty__Output, _users_FindAllUsersResponse__Output>
   FindOne: MethodDefinition<_users_UsersIdRequest, _users_UsersResponse, _users_UsersIdRequest__Output, _users_UsersResponse__Output>
-  FindOneAll: MethodDefinition<_google_protobuf_Empty, _users_FindAllUsersResponse, _google_protobuf_Empty__Output, _users_FindAllUsersResponse__Output>
   Update: MethodDefinition<_users_UpdateUsersRequest, _users_UsersResponse, _users_UpdateUsersRequest__Output, _users_UsersResponse__Output>
 }

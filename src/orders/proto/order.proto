@@ -8,10 +8,9 @@ package orders;
 service Orders {
     rpc FindOneByOrderId(OrderIdRequest) returns (OrderResponse) {};
     rpc FindOneByUserId(OrderIdRequest) returns (OrderResponse) {}
-    //                  ^^^^^^^^^^^^^^  ?
     rpc FindAll(Empty) returns (FindAllOrderResponse) {};
     rpc Create(CreateOrderRequest) returns (OrderResponse) {};
-    rpc Update(UpdateOrderResquest) returns (OrderResponse) {};
+    rpc Update(UpdateOrderRequest) returns (OrderResponse) {};
     rpc Delete(OrderIdRequest) returns (OrderResponse) {};
 }
 
@@ -24,7 +23,7 @@ message CreateOrderRequest {
     int64 price = 2;
 }
 
-message UpdateOrderResquest {
+message UpdateOrderRequest {
     int64 order_id = 1;
     int64 user_id = 2;
     int64 price = 3;

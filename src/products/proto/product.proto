@@ -7,7 +7,7 @@ package products;
 
 service Products {
     rpc FindOne(ProductIdRequest) returns (ProductResponse) {};
-    rpc FindOneAll(Empty) returns (FindAllProductResponse) {};
+    rpc FindAll(Empty) returns (FindAllProductResponse) {};
     rpc Create(CreateProductRequest) returns (ProductResponse) {};
     rpc Delete(ProductIdRequest) returns (ProductResponse) {};
     rpc Update(UpdateProductRequest) returns (ProductResponse) {};

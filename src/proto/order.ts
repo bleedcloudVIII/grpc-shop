@@ -20,7 +20,7 @@ export interface ProtoGrpcType {
     OrderIdRequest: MessageTypeDefinition
     OrderResponse: MessageTypeDefinition
     Orders: SubtypeConstructor<typeof grpc.Client, _orders_OrdersClient> & { service: _orders_OrdersDefinition }
-    UpdateOrderResquest: MessageTypeDefinition
+    UpdateOrderRequest: MessageTypeDefinition
   }
 }
 

@@ -7,7 +7,7 @@ import type { Empty as _google_protobuf_Empty, Empty__Output as _google_protobuf
 import type { FindAllOrderResponse as _orders_FindAllOrderResponse, FindAllOrderResponse__Output as _orders_FindAllOrderResponse__Output } from '../orders/FindAllOrderResponse';
 import type { OrderIdRequest as _orders_OrderIdRequest, OrderIdRequest__Output as _orders_OrderIdRequest__Output } from '../orders/OrderIdRequest';
 import type { OrderResponse as _orders_OrderResponse, OrderResponse__Output as _orders_OrderResponse__Output } from '../orders/OrderResponse';
-import type { UpdateOrderResquest as _orders_UpdateOrderResquest, UpdateOrderResquest__Output as _orders_UpdateOrderResquest__Output } from '../orders/UpdateOrderResquest';
+import type { UpdateOrderRequest as _orders_UpdateOrderRequest, UpdateOrderRequest__Output as _orders_UpdateOrderRequest__Output } from '../orders/UpdateOrderRequest';
 
 export interface OrdersClient extends grpc.Client {
   Create(argument: _orders_CreateOrderRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
@@ -55,14 +55,14 @@ export interface OrdersClient extends grpc.Client {
   findOneByUserId(argument: _orders_OrderIdRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
   findOneByUserId(argument: _orders_OrderIdRequest, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
   
-  Update(argument: _orders_UpdateOrderResquest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
-  Update(argument: _orders_UpdateOrderResquest, metadata: grpc.Metadata, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
-  Update(argument: _orders_UpdateOrderResquest, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
-  Update(argument: _orders_UpdateOrderResquest, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
-  update(argument: _orders_UpdateOrderResquest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
-  update(argument: _orders_UpdateOrderResquest, metadata: grpc.Metadata, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
-  update(argument: _orders_UpdateOrderResquest, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
-  update(argument: _orders_UpdateOrderResquest, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
+  Update(argument: _orders_UpdateOrderRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
+  Update(argument: _orders_UpdateOrderRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
+  Update(argument: _orders_UpdateOrderRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
+  Update(argument: _orders_UpdateOrderRequest, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
+  update(argument: _orders_UpdateOrderRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
+  update(argument: _orders_UpdateOrderRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
+  update(argument: _orders_UpdateOrderRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
+  update(argument: _orders_UpdateOrderRequest, callback: grpc.requestCallback<_orders_OrderResponse__Output>): grpc.ClientUnaryCall;
   
 }
 
@@ -77,7 +77,7 @@ export interface OrdersHandlers extends grpc.UntypedServiceImplementation {
   
   FindOneByUserId: grpc.handleUnaryCall<_orders_OrderIdRequest__Output, _orders_OrderResponse>;
   
-  Update: grpc.handleUnaryCall<_orders_UpdateOrderResquest__Output, _orders_OrderResponse>;
+  Update: grpc.handleUnaryCall<_orders_UpdateOrderRequest__Output, _orders_OrderResponse>;
   
 }
 
@@ -87,5 +87,5 @@ export interface OrdersDefinition extends grpc.ServiceDefinition {
   FindAll: MethodDefinition<_google_protobuf_Empty, _orders_FindAllOrderResponse, _google_protobuf_Empty__Output, _orders_FindAllOrderResponse__Output>
   FindOneByOrderId: MethodDefinition<_orders_OrderIdRequest, _orders_OrderResponse, _orders_OrderIdRequest__Output, _orders_OrderResponse__Output>
   FindOneByUserId: MethodDefinition<_orders_OrderIdRequest, _orders_OrderResponse, _orders_OrderIdRequest__Output, _orders_OrderResponse__Output>
-  Update: MethodDefinition<_orders_UpdateOrderResquest, _orders_OrderResponse, _orders_UpdateOrderResquest__Output, _orders_OrderResponse__Output>
+  Update: MethodDefinition<_orders_UpdateOrderRequest, _orders_OrderResponse, _orders_UpdateOrderRequest__Output, _orders_OrderResponse__Output>
 }

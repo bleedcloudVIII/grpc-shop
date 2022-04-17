@@ -28,6 +28,15 @@ export interface ProductsClient extends grpc.Client {
   delete(argument: _products_ProductIdRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
   delete(argument: _products_ProductIdRequest, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
   
+  FindAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
+  FindAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
+  FindAll(argument: _google_protobuf_Empty, options: grpc.CallOptions, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
+  FindAll(argument: _google_protobuf_Empty, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
+  findAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
+  findAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
+  findAll(argument: _google_protobuf_Empty, options: grpc.CallOptions, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
+  findAll(argument: _google_protobuf_Empty, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
+  
   FindOne(argument: _products_ProductIdRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
   FindOne(argument: _products_ProductIdRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
   FindOne(argument: _products_ProductIdRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
@@ -36,15 +45,6 @@ export interface ProductsClient extends grpc.Client {
   findOne(argument: _products_ProductIdRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
   findOne(argument: _products_ProductIdRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
   findOne(argument: _products_ProductIdRequest, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
-  
-  FindOneAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
-  FindOneAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
-  FindOneAll(argument: _google_protobuf_Empty, options: grpc.CallOptions, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
-  FindOneAll(argument: _google_protobuf_Empty, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
-  findOneAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
-  findOneAll(argument: _google_protobuf_Empty, metadata: grpc.Metadata, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
-  findOneAll(argument: _google_protobuf_Empty, options: grpc.CallOptions, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
-  findOneAll(argument: _google_protobuf_Empty, callback: grpc.requestCallback<_products_FindAllProductResponse__Output>): grpc.ClientUnaryCall;
   
   Update(argument: _products_UpdateProductRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
   Update(argument: _products_UpdateProductRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_products_ProductResponse__Output>): grpc.ClientUnaryCall;
@@ -62,9 +62,9 @@ export interface ProductsHandlers extends grpc.UntypedServiceImplementation {
   
   Delete: grpc.handleUnaryCall<_products_ProductIdRequest__Output, _products_ProductResponse>;
   
-  FindOne: grpc.handleUnaryCall<_products_ProductIdRequest__Output, _products_ProductResponse>;
+  FindAll: grpc.handleUnaryCall<_google_protobuf_Empty__Output, _products_FindAllProductResponse>;
   
-  FindOneAll: grpc.handleUnaryCall<_google_protobuf_Empty__Output, _products_FindAllProductResponse>;
+  FindOne: grpc.handleUnaryCall<_products_ProductIdRequest__Output, _products_ProductResponse>;
   
   Update: grpc.handleUnaryCall<_products_UpdateProductRequest__Output, _products_ProductResponse>;
   
@@ -73,7 +73,7 @@ export interface ProductsHandlers extends grpc.UntypedServiceImplementation {
 export interface ProductsDefinition extends grpc.ServiceDefinition {
   Create: MethodDefinition<_products_CreateProductRequest, _products_ProductResponse, _products_CreateProductRequest__Output, _products_ProductResponse__Output>
   Delete: MethodDefinition<_products_ProductIdRequest, _products_ProductResponse, _products_ProductIdRequest__Output, _products_ProductResponse__Output>
+  FindAll: MethodDefinition<_google_protobuf_Empty, _products_FindAllProductResponse, _google_protobuf_Empty__Output, _products_FindAllProductResponse__Output>
   FindOne: MethodDefinition<_products_ProductIdRequest, _products_ProductResponse, _products_ProductIdRequest__Output, _products_ProductResponse__Output>
-  FindOneAll: MethodDefinition<_google_protobuf_Empty, _products_FindAllProductResponse, _google_protobuf_Empty__Output, _products_FindAllProductResponse__Output>
   Update: MethodDefinition<_products_UpdateProductRequest, _products_ProductResponse, _products_UpdateProductRequest__Output, _products_ProductResponse__Output>
 }

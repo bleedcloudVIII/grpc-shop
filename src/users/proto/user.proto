@@ -7,7 +7,7 @@ package users;
 
 service Users {
     rpc FindOne(UsersIdRequest) returns (UsersResponse) {};
-    rpc FindOneAll(Empty) returns (FindAllUsersResponse) {};
+    rpc FindAll(Empty) returns (FindAllUsersResponse) {};
     rpc Create(CreateUsersRequest) returns (UsersResponse) {};
     rpc Delete(UsersIdRequest) returns (UsersResponse) {};
     rpc Update(UpdateUsersRequest) returns (UsersResponse) {};

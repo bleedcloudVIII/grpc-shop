@@ -2,7 +2,6 @@ syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
-// import "google/protobuf/string.proto";
 
 package categories;
 
