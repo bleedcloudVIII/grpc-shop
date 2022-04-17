@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+package users;
+
+service Users {
+    rpc FindOne(UsersIdRequest) returns (UsersResponse) {};
+    rpc FindOneAll(Empty) returns (FindAllUsersResponse) {};
+    rpc Create(CreateUsersRequest) returns (UsersResponse) {};
+    rpc Delete(UsersIdRequest) returns (UsersResponse) {};
+    rpc Update(UpdateUsersRequest) returns (UsersResponse) {};
+}
+
+message UsersIdRequest {
+    int64 id = 1;
+}
+
+message CreateUsersRequest {
+    string email = 1;
+    int64 password = 2;
+}
+
+message UpdateUsersRequest {
+    int64 id = 1;
+    string email = 2;
+    int64 password = 3;
+}
+
+message UsersResponse {
+    int64 id = 1;
+    string email = 2;
+    int64 password = 3;
+    Timestamp createdAt = 4;
+    Timestamp updatedAt = 5;
+}
+
+message FindAllUsersResponse {
+    repeated UsersResponse results = 1 [packed = true];
+}
+

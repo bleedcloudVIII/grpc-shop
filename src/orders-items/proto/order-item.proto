@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package order_items;
+
+service OrderItems {
+    rpc FindAllByOrderId(OrderItemByIdRequest) returns (OrderItemResponse) {};
+    rpc FindOneByOrderItemId(OrderItemByIdRequest) returns (FindAllOrderItemResponse) {};
+    rpc Create(CreateOrderItemRequest) returns (OrderItemResponse) {};
+    rpc Delete(OrderItemByIdRequest) returns (OrderItemResponse) {};
+    rpc Update(UpdateOrderItemRequest) returns (OrderItemResponse) {};
+}
+
+message OrderItemByIdRequest {
+    int64 id = 1;
+}
+
+message CreateOrderItemRequest {
+    int64 order_id = 1;
+    int64 product_id = 2;
+    int64 product_count = 3;
+    int64 product_price = 4;
+}
+
+message UpdateOrderItemRequest {
+    int64 id = 1;
+    int64 order_id = 2;
+    int64 product_id = 3;
+    int64 product_count = 4;
+    int64 product_price = 5;
+}
+
+message OrderItemResponse {
+    int64 id = 1;
+    int64 order_id = 2;
+    int64 product_id = 3;
+    int64 product_count = 4;
+    int64 product_price = 5;
+    int32 status = 6;
+    Timestamp createdAt = 7;
+    Timestamp updatedAt = 8;
+}
+
+message FindAllOrderItemResponse {
+    repeated OrderItemResponse results = 1 [packed = true];
+}
