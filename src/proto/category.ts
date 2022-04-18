@@ -12,6 +12,8 @@ export interface ProtoGrpcType {
     Category: SubtypeConstructor<typeof grpc.Client, _categories_CategoryClient> & { service: _categories_CategoryDefinition }
     CategoryIdRequest: MessageTypeDefinition
     CategoryResponse: MessageTypeDefinition
+    CreateCategory: MessageTypeDefinition
+    DeleteCategory: MessageTypeDefinition
     FindAllCategoryResponse: MessageTypeDefinition
     UpdateCategoryRequest: MessageTypeDefinition
   }

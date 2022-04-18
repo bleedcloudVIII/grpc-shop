@@ -8,13 +8,21 @@ package categories;
 service Category {
     rpc FindOne(CategoryIdRequest) returns (CategoryResponse) {};
     rpc FindAll(Empty) returns (FindAllCategoryResponse) {};
-    rpc Create(CategoryIdRequest) returns (CategoryResponse) {};
-    rpc Delete(CategoryIdRequest) returns (CategoryResponse) {};
+    rpc Create(CreateCategory) returns (CategoryResponse) {};
+    rpc Delete(CategoryIdRequest) returns (DeleteCategory) {};
     rpc Update(UpdateCategoryRequest) returns (CategoryResponse) {};
 }
 
 message CategoryIdRequest {
     int64 category_id = 1;
+}
+
+message CreateCategory {
+    string name = 1;
+}
+
+message DeleteCategory {
+    int32 status = 1;
 }
 
 message CategoryResponse {

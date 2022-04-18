@@ -14,11 +14,11 @@ import { Category } from './category/category.model';
 
 @Module({
   imports: [
-    AuthModule,
-    UsersModule, 
-    ProductsModule, 
-    OrdersModule, 
-    OrdersItemsModule,
+    // AuthModule,
+    // UsersModule, 
+    // ProductsModule, 
+    // OrdersModule, 
+    // OrdersItemsModule,
     SequelizeModule.forRoot({
       dialect: 'postgres',
       host: 'localhost',
