@@ -15,6 +15,6 @@ export class Category extends Model<Category> {
     @Column({type: DataType.STRING, allowNull: false})
     name: string;
 
-    @BelongsTo(() => Product)
-    category: Category
+    // @BelongsTo(() => Product)
+    // category: Category
 }

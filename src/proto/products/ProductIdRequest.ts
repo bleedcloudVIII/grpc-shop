@@ -1,9 +1,8 @@
 // Original file: src/products/proto/product.proto
 
-import type { Long } from '@grpc/proto-loader';
 
 export interface ProductIdRequest {
-  'id'?: (number | string | Long);
+  'id'?: (string);
 }
 
 export interface ProductIdRequest__Output {

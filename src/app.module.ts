@@ -16,7 +16,7 @@ import { Category } from './category/category.model';
   imports: [
     // AuthModule,
     // UsersModule, 
-    // ProductsModule, 
+    ProductsModule, 
     // OrdersModule, 
     // OrdersItemsModule,
     SequelizeModule.forRoot({

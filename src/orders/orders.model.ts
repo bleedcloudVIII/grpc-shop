@@ -18,11 +18,11 @@ export class Order extends Model<Order, CreateOrderAtts> {
     @Column({type: DataType.INTEGER})
     price: number;
 
-    @BelongsTo(() => User, 'fk_order_user_id')
-    user: User
+    // @BelongsTo(() => User, 'fk_order_user_id')
+    // user: User
 
-    @HasMany(() => OrderItem)
-    orderItem: OrderItem
+    // @HasMany(() => OrderItem)
+    // orderItem: OrderItem
 
     
 }

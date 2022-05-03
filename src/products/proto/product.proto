@@ -14,7 +14,7 @@ service Products {
 }
 
 message ProductIdRequest {
-    int64 id = 1;
+    string id = 1;
 }
 
 message CreateProductRequest {
@@ -35,7 +35,6 @@ message ProductResponse {
     string name = 2;
     int64 cost = 3;
     string category = 4;
-    int64 status = 5;
     Timestamp createdAt = 6;
     Timestamp updatedAt = 7;
 }

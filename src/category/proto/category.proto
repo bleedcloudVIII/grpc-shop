@@ -34,8 +34,8 @@ message CategoryResponse {
 }
 
 message UpdateCategoryRequest {
-    int64 category_id = 1;
-    string new_name = 2;
+    int64 id = 1;
+    string name = 2;
 }
 
 message FindAllCategoryResponse {

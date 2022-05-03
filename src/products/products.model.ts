@@ -17,6 +17,9 @@ export class Product extends Model<Product, CreateProductAtts> {
     @Column({type: DataType.INTEGER, allowNull: false})
     cost: number;
 
-    @HasMany(() => Category)
-    category: Category
+    @Column({type: DataType.STRING, allowNull: true})
+    category: string;
+
+    // @HasMany(() => Category)
+    // categoryFK: Category
 }

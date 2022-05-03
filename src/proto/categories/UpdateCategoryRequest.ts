@@ -3,11 +3,11 @@
 import type { Long } from '@grpc/proto-loader';
 
 export interface UpdateCategoryRequest {
-  'categoryId'?: (number | string | Long);
-  'newName'?: (string);
+  'id'?: (number | string | Long);
+  'name'?: (string);
 }
 
 export interface UpdateCategoryRequest__Output {
-  'categoryId': (string);
-  'newName': (string);
+  'id': (string);
+  'name': (string);
 }

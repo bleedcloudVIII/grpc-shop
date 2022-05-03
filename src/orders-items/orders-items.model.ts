@@ -13,7 +13,7 @@ export class OrderItem extends Model<OrderItem, CreateOrderItemAtts> {
     @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
-    @ForeignKey(() => Order)
+    // @ForeignKey(() => Order)
     @Column({type: DataType.INTEGER, allowNull: false})
     order_id: number;
 
@@ -26,8 +26,8 @@ export class OrderItem extends Model<OrderItem, CreateOrderItemAtts> {
     @Column({type: DataType.INTEGER})
     product_price: number;
 
-    @BelongsTo(() => Order)
-    order: Order
+    // @BelongsTo(() => Order)
+    // order: Order
 }
 
 
