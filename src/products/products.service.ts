@@ -1,32 +1,39 @@
-import { HttpStatus, Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable, Controller } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateProductDto } from './dto/create-product.dto';
 import { Product } from './products.model';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { GrpcMethod } from '@nestjs/microservices';
+import { ProductResponse } from 'src/proto/products/ProductResponse';
 
 @Injectable()
 export class ProductsService {
 
     constructor(@InjectModel(Product) private readonly productRepository: typeof Product) {}
 
-    async create(dto: CreateProductDto) {
+    @GrpcMethod('Products', 'Create')
+    async Create(dto: CreateProductDto): Promise<ProductResponse> {
         return this.productRepository.create(dto);
     }
 
-    async findAll() {
+    @GrpcMethod('Products', 'FindAll')
+    async FindAll() {
         return this.productRepository.findAll();
     }
 
-    async findById(id: number) {
+    @GrpcMethod('Products', 'FindOne')
+    async FindOne(id: number) {
         return this.productRepository.findOne({where: {id}});
     }
 
-    async delete(id: number) {
+    @GrpcMethod('Products', 'Delete')
+    async Delete(id: number) {
         await this.productRepository.destroy({where: {id}});
         return HttpStatus.OK;
     }
 
-    async update(dto: UpdateProductDto) {
+    @GrpcMethod('Products', 'Update')
+    async Update(dto: UpdateProductDto) {
         await this.productRepository.update({...dto}, {where: {id: dto.id}});
         const product = await this.productRepository.findOne({where: {id: dto.id}});
         return product;

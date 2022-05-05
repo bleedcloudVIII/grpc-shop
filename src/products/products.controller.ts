@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Delete, Put, Inject, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Delete, Put, Inject, HttpStatus, HttpException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductsService } from './products.service';
@@ -8,6 +8,10 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Product } from './products.model';
 import { ProductIdRequest } from 'src/proto/products/ProductIdRequest';
 import { ProductResponse } from 'src/proto/products/ProductResponse';
+
+interface id {
+    id: number;        
+}
 
 @Controller('/products/')
 export class ProductsController {
@@ -25,12 +29,16 @@ export class ProductsController {
 
     //Controller
 
+
+
     @Get(':id')
-    findOne(@Param('id') id: ProductIdRequest) {
-        return this.productService.FindOne(id);
+    findOne(@Param('id') id: any) {
+        const y = this.productService.FindOne({id}); // { id: Long { low: 2, high: 0, unsigned: false } }
+        console.log(y);
+        return y;
     }
 
-    @Get('')
+    @Get()
     findAll() {
         return this.productService.FindAll();
     }
@@ -41,7 +49,7 @@ export class ProductsController {
     }
 
     @Delete(':id')
-    delete(@Param('id') id) {
+    delete(@Param('id') id: ProductIdRequest) {
         return this.productService.Delete(id);
     }
 
@@ -63,8 +71,17 @@ export class ProductsController {
     }
 
     @GrpcMethod('Products', 'FindOne')
-    async FindOne(id: string) {
-        return this.productsRepository.findOne({where: {id}});
+    async FindOne(id) {
+        const parse_id = {id}.id.id.low;
+        const product = await this.productsRepository.findOne({where: {id: parse_id}});
+        if(product) {
+            return product;
+        }
+        else{
+            // return new HttpException('Product is not be find', HttpStatus.NOT_FOUND);
+            // Не работает, надо что-то придумать
+            return '{"message": "Product is not be find","code": 404}';
+        }
     }
 
     @GrpcMethod('Products', 'Delete')
