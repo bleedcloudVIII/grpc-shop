@@ -3,9 +3,9 @@
 import type { Long } from '@grpc/proto-loader';
 
 export interface CategoryIdRequest {
-  'categoryId'?: (number | string | Long);
+  'id'?: (number | string | Long);
 }
 
 export interface CategoryIdRequest__Output {
-  'categoryId': (string);
+  'id': (string);
 }

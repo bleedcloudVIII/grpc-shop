@@ -40,6 +40,6 @@ message ProductResponse {
 }
 
 message FindAllProductResponse {
-    repeated ProductResponse results = 1 [packed = true];
+    ProductResponse results = 1 [packed = true];
 }
 

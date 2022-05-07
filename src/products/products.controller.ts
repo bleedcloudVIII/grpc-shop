@@ -8,6 +8,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Product } from './products.model';
 import { ProductIdRequest } from 'src/proto/products/ProductIdRequest';
 import { ProductResponse } from 'src/proto/products/ProductResponse';
+import { Empty } from 'src/proto/google/protobuf/Empty';
 
 interface id {
     id: number;        
@@ -32,15 +33,14 @@ export class ProductsController {
 
 
     @Get(':id')
-    findOne(@Param('id') id: any) {
-        const y = this.productService.FindOne({id}); // { id: Long { low: 2, high: 0, unsigned: false } }
-        console.log(y);
-        return y;
+    findOne(@Param('id') id: number) {
+        return this.productService.FindOne({id}); // { id: Long { low: 2, high: 0, unsigned: false } }
     }
 
     @Get()
     findAll() {
-        return this.productService.FindAll();
+        let call: Empty;
+        return this.productService.FindAll(call); 
     }
 
     @Post()
@@ -49,8 +49,8 @@ export class ProductsController {
     }
 
     @Delete(':id')
-    delete(@Param('id') id: ProductIdRequest) {
-        return this.productService.Delete(id);
+    delete(@Param('id') id: number) {
+        return this.productService.Delete({id});
     }
 
     @Put('')
@@ -67,13 +67,20 @@ export class ProductsController {
 
     @GrpcMethod('Products', 'FindAll')
     async FindAll() {
-        return this.productsRepository.findAll();
+        const products = await this.productsRepository.findAll();
+        // console.log(products.map(product => {product.}));
+        if(products) {
+            return products;
+        }
+        else {
+            return {};
+        }
     }
 
     @GrpcMethod('Products', 'FindOne')
     async FindOne(id) {
-        const parse_id = {id}.id.id.low;
-        const product = await this.productsRepository.findOne({where: {id: parse_id}});
+        const convert_id = {id}.id.id.low;
+        const product = await this.productsRepository.findOne({where: {id: convert_id}});
         if(product) {
             return product;
         }
@@ -85,8 +92,9 @@ export class ProductsController {
     }
 
     @GrpcMethod('Products', 'Delete')
-    async Delete(id: number) {
-        await this.productsRepository.destroy({where: {id}});
+    async Delete(id) {
+        const convert_id = {id}.id.id.low;
+        await this.productsRepository.destroy({where: {id: convert_id}});
         return HttpStatus.OK;
     }
 

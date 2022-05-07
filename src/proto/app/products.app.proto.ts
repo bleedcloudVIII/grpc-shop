@@ -1,4 +1,5 @@
 import { Observable } from "rxjs";
+import { Empty } from "../google/protobuf/Empty";
 import { CreateProductRequest } from "../products/CreateProductRequest";
 import { FindAllProductResponse } from "../products/FindAllProductResponse";
 import { ProductIdRequest } from "../products/ProductIdRequest";
@@ -10,7 +11,7 @@ export interface IProductsService {
 
     FindOne(request: ProductIdRequest): Observable<ProductResponse>;
 
-    FindAll(): Observable<FindAllProductResponse>;
+    FindAll(Empty: Empty): Observable<FindAllProductResponse>;
 
     Create(request: CreateProductRequest): Observable<ProductResponse>;
 

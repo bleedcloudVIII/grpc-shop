@@ -32,8 +32,8 @@ export class CategoryController {
     }
 
     @Get(':category_id')
-    findOne(@Param('category_id') category_id: CategoryIdRequest) {
-        return this.categoryService.FindOne(category_id);
+    findOne(@Param('category_id') id) {
+        return this.categoryService.FindOne({id});
     }
 
     @Post('')
@@ -47,15 +47,16 @@ export class CategoryController {
     }
 
     @Delete(':category_id')
-    delete(@Param('category_id') category_id: CategoryIdRequest) {
-        return this.categoryService.Delete(category_id);
+    delete(@Param('category_id') id) {
+        return this.categoryService.Delete({id});
     }
 
     //grpc methods 
 
     @GrpcMethod('Category', 'FindOne')
-    async FindOne(category_id: number): Promise<CategoryResponse> {
-        return this.categoryRepository.findOne({where: {id: category_id}});
+    async FindOne(id): Promise<CategoryResponse> {
+        const convert_id = {id}.id.id.low;
+        return this.categoryRepository.findOne({where: {id: convert_id}});
     }
 
     @GrpcMethod('Category', 'FindAll')
@@ -64,8 +65,9 @@ export class CategoryController {
     }
 
     @GrpcMethod('Category', 'Delete')
-    async Delete(category_id: number): Promise<DeleteCategory> {
-        await this.categoryRepository.destroy({where: {id: category_id}});
+    async Delete(id): Promise<DeleteCategory> {
+        const convert_id = {id}.id.id.low;
+        await this.categoryRepository.destroy({where: {id: convert_id}});
         return {status: HttpStatus.OK};
     }
 
